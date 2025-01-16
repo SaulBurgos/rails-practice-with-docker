@@ -1,0 +1,47 @@
+# Dockerfile.rails
+FROM ruby:3.1.2 AS rails-toolbox
+
+# Default directory
+ENV INSTALL_PATH /opt/app
+RUN mkdir -p $INSTALL_PATH
+
+# Install packages needed to build gems
+# if your gems have native extensions that need to be compiled. The build-essential 
+# package and other dependencies are often required for building such gems.
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y build-essential curl git pkg-config libyaml-dev && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+#RUN chown -R user:user /opt/app
+WORKDIR /opt/app
+
+# Install specific version of Rails and Bundler
+RUN gem install rails -v 7.1.0 && gem install bundler
+
+
+# Copy the Gemfile and Gemfile.lock from the hello_app directory to the working directory
+COPY hello_app/Gemfile .
+
+# Install the bundle and perform additional clean-up and optimization
+RUN bundle install && \
+    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
+    bundle exec bootsnap precompile --gemfile
+
+# Copy the rest of the application code from the hello_app directory
+COPY hello_app/ .
+
+# Precompile bootsnap code for faster boot times
+RUN bundle exec bootsnap precompile app/ lib/
+
+# Entrypoint prepares the database.
+# The ENTRYPOINT instruction in a Dockerfile specifies a command that will always run when the container starts
+# This specifies the command to run. It's pointing to a script located at /rails/bin/docker-entrypoint
+# ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+
+# Example: Run a shell
+# CMD ["/bin/sh"]
+
+# Expose port 3000 to the host
+EXPOSE 3000
+# Start the Rails server
+CMD ["rails", "server", "-b", "0.0.0.0"]
