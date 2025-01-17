@@ -2,8 +2,8 @@
 FROM ruby:3.1.2 AS rails-toolbox
 
 # Default directory
-ENV INSTALL_PATH /opt/app
-RUN mkdir -p $INSTALL_PATH
+# ENV INSTALL_PATH /opt/app
+# RUN mkdir -p $INSTALL_PATH
 
 # Install packages needed to build gems
 # if your gems have native extensions that need to be compiled. The build-essential 
@@ -13,7 +13,8 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 #RUN chown -R user:user /opt/app
-WORKDIR /opt/app
+# WORKDIR /opt/app
+WORKDIR /rails
 
 # Install specific version of Rails and Bundler
 RUN gem install rails -v 7.1.0 && gem install bundler
