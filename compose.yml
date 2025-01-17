@@ -3,7 +3,9 @@ version: "3.8"
 services:
   backend:
     container_name: rails-backend  
-    build: .
+    build:
+      context: ./hello_app
+      dockerfile: Dockerfile.dev
     environment:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
