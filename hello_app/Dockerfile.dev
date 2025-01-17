@@ -35,6 +35,9 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
+# Ensure the entrypoint script has execute permissions
+RUN chmod +x /rails/bin/docker-entrypoint.dev
+
 
 # Run and own only the runtime files as a non-root user for security
 # RUN useradd rails --create-home --shell /bin/bash && \
@@ -42,7 +45,7 @@ RUN bundle exec bootsnap precompile app/ lib/
 # USER rails:rails
 
 # Entrypoint prepares the database.
-# ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+ENTRYPOINT ["/rails/bin/docker-entrypoint.dev"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
