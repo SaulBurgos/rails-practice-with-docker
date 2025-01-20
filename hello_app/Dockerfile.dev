@@ -2,7 +2,7 @@
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
 ARG RUBY_VERSION=3.1.2
-FROM registry.docker.com/library/ruby:$RUBY_VERSION as base
+FROM ruby:$RUBY_VERSION as base
 
 # Rails app lives here
 WORKDIR /rails
@@ -43,6 +43,13 @@ RUN chmod +x /rails/bin/docker-entrypoint.dev
 # RUN useradd rails --create-home --shell /bin/bash && \
 #     chown -R rails:rails db log storage tmp
 # USER rails:rails
+
+# Make your bash history persist in a dev container
+RUN SNIPPET="export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhistory/.bash_history" \
+    && mkdir -p /commandhistory \
+    && touch /commandhistory/.bash_history \
+    && chown -R root /commandhistory \
+    && echo $SNIPPET >> /root/.bashrc
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint.dev"]

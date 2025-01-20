@@ -1,6 +1,28 @@
 ## Links
 - https://docs.docker.com/guides/ruby/containerize/
+- https://containers.dev/implementors/json_reference/
+
+Setup rails:
 - https://www.youtube.com/watch?v=ignW-lxGEc0
+
+Dev containers:
+- https://www.youtube.com/watch?v=SDa3v4Quj7Y
+
+Working with Multiple Dev Containers:
+- https://www.youtube.com/watch?v=bVmczgfeR5Y&t=426s
+
+How to use a .env file to load environment variables in a dev container:
+- https://www.youtube.com/watch?v=qTU7w3bWrOk
+
+How to work with Monorepos in a dev container:
+- https://www.youtube.com/watch?v=o5coAL7oE0o
+
+How to make your bash history persist in a dev container:
+- https://www.youtube.com/watch?v=12nZz-TjoZg
+
+How to add a folder from your local file system to a dev container:
+- https://www.youtube.com/watch?v=L1-dx-ZD0Ao
+
 
 ## How to run it
 

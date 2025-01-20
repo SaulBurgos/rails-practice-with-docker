@@ -14,7 +14,10 @@
             "extensions": []
         }
     },
-    "remoteUser": "root"
+    "remoteUser": "root",
+    "mounts": [
+        "source=hello_app-bashhistory,target=/commandhistory,type=volume"
+    ]
 }
 
 
