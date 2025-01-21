@@ -1,6 +1,7 @@
 ## Links
 - https://docs.docker.com/guides/ruby/containerize/
 - https://containers.dev/implementors/json_reference/
+- https://code.visualstudio.com/docs/devcontainers/containers
 
 Setup rails:
 - https://www.youtube.com/watch?v=ignW-lxGEc0

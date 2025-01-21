@@ -11,7 +11,9 @@
             "settings": {
                 "terminal.integrated.shell.linux": "/bin/bash"
             },
-            "extensions": []
+            "extensions": [
+                "Codeium.codeium"
+            ]
         }
     },
     "remoteUser": "root",
