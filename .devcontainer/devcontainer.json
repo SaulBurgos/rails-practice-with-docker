@@ -12,7 +12,8 @@
                 "terminal.integrated.shell.linux": "/bin/bash"
             },
             "extensions": [
-                "Codeium.codeium"
+                "Codeium.codeium",
+                "rebornix.Ruby"
             ]
         }
     },
