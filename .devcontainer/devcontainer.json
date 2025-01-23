@@ -11,9 +11,13 @@
             "settings": {
                 "terminal.integrated.shell.linux": "/bin/bash"
             },
+            "files.associations": {
+                "*.html.erb": "html"
+            },
             "extensions": [
                 "Codeium.codeium",
-                "rebornix.Ruby"
+                // "rebornix.Ruby",
+                "Shopify.ruby-lsp"
             ]
         }
     },
