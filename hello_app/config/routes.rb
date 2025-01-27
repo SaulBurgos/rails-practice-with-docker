@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   root "static_pages#home"
-  get 'static_pages/home'
-  get 'static_pages/help'
-  get 'static_pages/about'
-  get 'static_pages/contact'
+  # get 'static_pages/home'
+  # get 'static_pages/help'
+  # get 'static_pages/about'
+  # get 'static_pages/contact'
+  
+  #Rewrite routes, now the variables available are: help_path ,about_path, contact_path, ect
+  get  "/help",    to: "static_pages#help"
+  get  "/about",   to: "static_pages#about"
+  get  "/contact", to: "static_pages#contact"
 
   resources :microposts
   resources :users
